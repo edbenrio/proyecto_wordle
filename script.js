@@ -1,7 +1,12 @@
 let intentos = 6;
 let diccionario = ['APPLE', 'HURLS', 'WINGS', 'YOUTH'];
 let palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
-console.log(palabra);
+console.log('La palabra es: ', palabra);
+fetch('https://random-word-api.herokuapp.com/word?length=5&lang=es').then( (response)=> response.json() ).then((response) =>{
+    palabra = response[0].toUpperCase();
+    console.log('Palabra desde la API:', palabra);
+})
+
 window.addEventListener('load', init)
 
 function init(){
